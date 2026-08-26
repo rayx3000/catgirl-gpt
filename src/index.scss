@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Sniglet:wght@400;800&family=Valley+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: "Valley Sans", sans-serif;
+}
+
+body{
+    background: #ff94cb;
+    background: -webkit-linear-gradient(350deg, rgba(255, 148, 203, 1) 0%, rgba(255, 173, 217, 1) 50%, rgba(250, 172, 241, 1) 100%);
+    background: -moz-linear-gradient(350deg, rgba(255, 148, 203, 1) 0%, rgba(255, 173, 217, 1) 50%, rgba(250, 172, 241, 1) 100%);
+    background: linear-gradient(350deg, rgba(255, 148, 203, 1) 0%, rgba(255, 173, 217, 1) 50%, rgba(250, 172, 241, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FF94CB", endColorstr="#FAACF1", GradientType=0);
+    height: 100vh;
+}
