@@ -3,4 +3,59 @@
     flex-grow: 2;
     font-family: "Poppins", sans-serif;
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.chat-options{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 12px;
+    width: 100%;
+
+    .chat-option-container{
+        display: flex;
+        align-self: flex-end;
+        gap: 20px;
+        align-items: center;
+
+        button{
+            display: flex;
+            gap: 8px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 11.5px;
+        }
+
+        button:hover{
+            background: #ff90c9;
+        }
+
+        button:active{
+            background: #ff78bd;
+        }
+    }
+}
+
+
+.chat-content{
+    display: flex;
+    flex-direction: column;
+    gap: 21.5px;
+    padding: 2%;
+    width: 82%;
+
+    .user-chat{
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 20px;
+    }
+
+    .ai-chat{
+        display: flex;
+        flex-direction: row;
+    }
 }

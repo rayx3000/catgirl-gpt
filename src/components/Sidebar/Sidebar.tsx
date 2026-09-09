@@ -9,8 +9,8 @@ const Sidebar = () => {
       <div className='sidebar-header'>
         <h3>Catgirl</h3>
         <div>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-          <FontAwesomeIcon icon={faTableColumns} />
+          <FontAwesomeIcon className='sidebar-header-icon' icon={faMagnifyingGlass} />
+          <FontAwesomeIcon className='sidebar-header-icon'  icon={faTableColumns} />
         </div>
       </div>
       <div className='sidebar-chat-tools'>
@@ -52,6 +52,12 @@ const Sidebar = () => {
           <button>Musta man ka</button>
           <button>Hello po</button>
           <button>Problema mo</button>
+          <button>Mobile legends</button>
+          <button>Bisaya girls</button>
+          <button>Girl with septum</button>
+          <button>Mobile legends</button>
+          <button>Bisaya girls</button>
+          <button>Girl with septum</button>
           <button>Mobile legends</button>
           <button>Bisaya girls</button>
           <button>Girl with septum</button>
