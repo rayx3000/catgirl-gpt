@@ -19,29 +19,109 @@ const Main = () => {
         </div>
       </div>
       <div className='chat-content'>
-        <div className="user-chat">
-          <div className='user-chat-container'>
-            <div className='user-chat-box'>
-              Hello Catgirl
+        <div className='chat-container'>
+          <div className="user-chat">
+            <div className='user-chat-container'>
+              <div className='user-chat-box'>
+                Hello Catgirl
+              </div>
+              <div className='user-chat-options'>
+                <button><FontAwesomeIcon icon={faCopy} /></button>
+                <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
+                <button><FontAwesomeIcon icon={faPencil} /></button>
+              </div>
             </div>
-            <div className='user-chat-options'>
+          </div>
+          <div className="ai-chat">
+            <div className='ai-chat-box'>
+              Nyaa! What's up how are you?
+            </div>
+            <div className='ai-chat-options'>
               <button><FontAwesomeIcon icon={faCopy} /></button>
+              <button><FontAwesomeIcon icon={faThumbsUp} /></button>
+              <button><FontAwesomeIcon icon={faThumbsDown} /></button>
               <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
-              <button><FontAwesomeIcon icon={faPencil} /></button>
+              <button><FontAwesomeIcon icon={faRepeat} /></button>
+              <button><FontAwesomeIcon icon={faEllipsis} /></button>
             </div>
           </div>
-        </div>
-        <div className="ai-chat">
-          <div className='ai-chat-box'>
-            Nyaa! What's up how are you?
+          <div className="user-chat">
+            <div className='user-chat-container'>
+              <div className='user-chat-box'>
+                heyy! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident doloremque, modi, neque alias tempora animi iste possimus harum obcaecati recusandae porro nostrum, dolorem eos corporis in nesciunt. Rerum, commodi quo?
+              </div>
+              <div className='user-chat-options'>
+                <button><FontAwesomeIcon icon={faCopy} /></button>
+                <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
+                <button><FontAwesomeIcon icon={faPencil} /></button>
+              </div>
+            </div>
           </div>
-          <div className='ai-chat-options'>
-            <button><FontAwesomeIcon icon={faCopy} /></button>
-            <button><FontAwesomeIcon icon={faThumbsUp} /></button>
-            <button><FontAwesomeIcon icon={faThumbsDown} /></button>
-            <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
-            <button><FontAwesomeIcon icon={faRepeat} /></button>
-            <button><FontAwesomeIcon icon={faEllipsis} /></button>
+          <div className="ai-chat">
+            <div className='ai-chat-box'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, molestias hic dignissimos ab ducimus maxime aut et libero dolores quae, ipsa dicta aliquam animi consequuntur laudantium unde delectus optio ipsam.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ipsum amet veniam mollitia, fugiat autem facilis quaerat. Omnis earum delectus optio vero aspernatur nemo. Dolorem voluptas odio voluptate consequatur neque.
+            </div>
+            <div className='ai-chat-options'>
+              <button><FontAwesomeIcon icon={faCopy} /></button>
+              <button><FontAwesomeIcon icon={faThumbsUp} /></button>
+              <button><FontAwesomeIcon icon={faThumbsDown} /></button>
+              <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
+              <button><FontAwesomeIcon icon={faRepeat} /></button>
+              <button><FontAwesomeIcon icon={faEllipsis} /></button>
+            </div>
+          </div>
+          <div className="user-chat">
+            <div className='user-chat-container'>
+              <div className='user-chat-box'>
+                heyy! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident doloremque, modi, neque alias tempora animi iste possimus harum obcaecati recusandae porro nostrum, dolorem eos corporis in nesciunt. Rerum, commodi quo?
+              </div>
+              <div className='user-chat-options'>
+                <button><FontAwesomeIcon icon={faCopy} /></button>
+                <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
+                <button><FontAwesomeIcon icon={faPencil} /></button>
+              </div>
+            </div>
+          </div>
+          <div className="ai-chat">
+            <div className='ai-chat-box'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, molestias hic dignissimos ab ducimus maxime aut et libero dolores quae, ipsa dicta aliquam animi consequuntur laudantium unde delectus optio ipsam.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ipsum amet veniam mollitia, fugiat autem facilis quaerat. Omnis earum delectus optio vero aspernatur nemo. Dolorem voluptas odio voluptate consequatur neque.
+            </div>
+            <div className='ai-chat-options'>
+              <button><FontAwesomeIcon icon={faCopy} /></button>
+              <button><FontAwesomeIcon icon={faThumbsUp} /></button>
+              <button><FontAwesomeIcon icon={faThumbsDown} /></button>
+              <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
+              <button><FontAwesomeIcon icon={faRepeat} /></button>
+              <button><FontAwesomeIcon icon={faEllipsis} /></button>
+            </div>
+          </div>
+          <div className="user-chat">
+            <div className='user-chat-container'>
+              <div className='user-chat-box'>
+                heyy! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident doloremque, modi, neque alias tempora animi iste possimus harum obcaecati recusandae porro nostrum, dolorem eos corporis in nesciunt. Rerum, commodi quo?
+              </div>
+              <div className='user-chat-options'>
+                <button><FontAwesomeIcon icon={faCopy} /></button>
+                <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
+                <button><FontAwesomeIcon icon={faPencil} /></button>
+              </div>
+            </div>
+          </div>
+          <div className="ai-chat">
+            <div className='ai-chat-box'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, molestias hic dignissimos ab ducimus maxime aut et libero dolores quae, ipsa dicta aliquam animi consequuntur laudantium unde delectus optio ipsam.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ipsum amet veniam mollitia, fugiat autem facilis quaerat. Omnis earum delectus optio vero aspernatur nemo. Dolorem voluptas odio voluptate consequatur neque.
+            </div>
+            <div className='ai-chat-options'>
+              <button><FontAwesomeIcon icon={faCopy} /></button>
+              <button><FontAwesomeIcon icon={faThumbsUp} /></button>
+              <button><FontAwesomeIcon icon={faThumbsDown} /></button>
+              <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
+              <button><FontAwesomeIcon icon={faRepeat} /></button>
+              <button><FontAwesomeIcon icon={faEllipsis} /></button>
+            </div>
           </div>
         </div>
       </div>
