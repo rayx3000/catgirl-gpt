@@ -128,6 +128,19 @@
             display: flex;
             gap: 3.5px;
 
+            div{
+                position: relative;
+
+                .ai-message-options-tab{
+                    position: absolute;
+                    top: -125px;
+
+                    .ai-message-tab-option{
+                        width: 180px;
+                    }
+                }
+            }
+
             button{
                 background: transparent;
                 border: none;

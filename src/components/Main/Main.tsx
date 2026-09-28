@@ -2,7 +2,8 @@ import { faShareFromSquare, faEllipsis, faCopy, faArrowUpFromBracket,
          faPencil, faThumbsUp, faThumbsDown, faRepeat, faPlus, faBrain, 
          faMicrophoneLines, faArrowRight, faPaperclip, faFolderPlus,
         faImage, faMusic, faMagnifyingGlass, faFolderOpen, faThumbTack,
-        faBoxArchive, faTrashCan} from '@fortawesome/free-solid-svg-icons'
+        faBoxArchive, faTrashCan, faArrowsSplitUpAndLeft, faHeadphones,
+        faBookOpen} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState, useEffect, useRef } from 'react';
 import './Main.scss'
@@ -11,9 +12,11 @@ const Main: React.FC = () => {
 
   const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState<boolean>(false);
   const [isInputMenuOpen, setIsInputMenuOpen] = useState<boolean>(false);
+  const [activeChatMenuIndex, setActiveChatMenuIndex] = useState<number | null>(null);
 
   const headerMenuRef = useRef<HTMLDivElement>(null);
   const inputMenuRef = useRef<HTMLDivElement>(null);
+  const chatMenuRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -24,6 +27,13 @@ const Main: React.FC = () => {
       if (inputMenuRef.current && !inputMenuRef.current.contains(target)) {
         setIsInputMenuOpen(false);
       }
+      if (
+        activeChatMenuIndex !== null &&
+        chatMenuRefs.current[activeChatMenuIndex] &&
+        !chatMenuRefs.current[activeChatMenuIndex]?.contains(target)
+      ) {
+        setActiveChatMenuIndex(null);
+      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -31,7 +41,7 @@ const Main: React.FC = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []); 
+  }, [activeChatMenuIndex]); 
 
 
   return (
@@ -93,7 +103,27 @@ const Main: React.FC = () => {
               <button><FontAwesomeIcon icon={faThumbsDown} /></button>
               <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
               <button><FontAwesomeIcon icon={faRepeat} /></button>
-              <button><FontAwesomeIcon icon={faEllipsis} /></button>
+              <div ref={(el) => { chatMenuRefs.current[0] = el; }}>
+                <button onClick={() => setActiveChatMenuIndex((prev) => (prev === 0 ? null : 0))} >
+                  <FontAwesomeIcon icon={faEllipsis} />
+                </button>
+                {activeChatMenuIndex === 0 && (
+                <div className='ai-message-options-tab options'>
+                  <button className='ai-message-tab-option'>
+                   <FontAwesomeIcon icon={faArrowsSplitUpAndLeft} />
+                    <span>Branch Chat</span>
+                  </button>
+                  <button className='ai-message-tab-option'>
+                    <FontAwesomeIcon icon={faHeadphones} />
+                    <span>Listen</span>
+                  </button>
+                  <button className='ai-message-tab-option'>
+                    <FontAwesomeIcon icon={faBookOpen} />
+                    <span>View Sources</span>
+                  </button>
+                </div>
+                )}
+              </div>
             </div>
           </div>
           <div className="user-chat">
@@ -119,7 +149,27 @@ const Main: React.FC = () => {
               <button><FontAwesomeIcon icon={faThumbsDown} /></button>
               <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
               <button><FontAwesomeIcon icon={faRepeat} /></button>
-              <button><FontAwesomeIcon icon={faEllipsis} /></button>
+              <div ref={(el) => { chatMenuRefs.current[1] = el; }}>
+                <button onClick={() => setActiveChatMenuIndex((prev) => (prev === 1 ? null : 1))} >
+                  <FontAwesomeIcon icon={faEllipsis} />
+                </button>
+                {activeChatMenuIndex === 1 && (
+                <div className='ai-message-options-tab options'>
+                  <button className='ai-message-tab-option'>
+                   <FontAwesomeIcon icon={faArrowsSplitUpAndLeft} />
+                    <span>Branch Chat</span>
+                  </button>
+                  <button className='ai-message-tab-option'>
+                    <FontAwesomeIcon icon={faHeadphones} />
+                    <span>Listen</span>
+                  </button>
+                  <button className='ai-message-tab-option'>
+                    <FontAwesomeIcon icon={faBookOpen} />
+                    <span>View Sources</span>
+                  </button>
+                </div>
+                )}
+              </div>
             </div>
           </div>
           <div className="user-chat">
@@ -145,7 +195,27 @@ const Main: React.FC = () => {
               <button><FontAwesomeIcon icon={faThumbsDown} /></button>
               <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
               <button><FontAwesomeIcon icon={faRepeat} /></button>
-              <button><FontAwesomeIcon icon={faEllipsis} /></button>
+              <div ref={(el) => { chatMenuRefs.current[2] = el; }}>
+                <button onClick={() => setActiveChatMenuIndex((prev) => (prev === 2 ? null : 2))} >
+                  <FontAwesomeIcon icon={faEllipsis} />
+                </button>
+                {activeChatMenuIndex === 2 && (
+                <div className='ai-message-options-tab options'>
+                  <button className='ai-message-tab-option'>
+                   <FontAwesomeIcon icon={faArrowsSplitUpAndLeft} />
+                    <span>Branch Chat</span>
+                  </button>
+                  <button className='ai-message-tab-option'>
+                    <FontAwesomeIcon icon={faHeadphones} />
+                    <span>Listen</span>
+                  </button>
+                  <button className='ai-message-tab-option'>
+                    <FontAwesomeIcon icon={faBookOpen} />
+                    <span>View Sources</span>
+                  </button>
+                </div>
+                )}
+              </div>
             </div>
           </div>
           <div className="user-chat">
@@ -171,7 +241,27 @@ const Main: React.FC = () => {
               <button><FontAwesomeIcon icon={faThumbsDown} /></button>
               <button><FontAwesomeIcon icon={faArrowUpFromBracket} /></button>
               <button><FontAwesomeIcon icon={faRepeat} /></button>
-              <button><FontAwesomeIcon icon={faEllipsis} /></button>
+              <div ref={(el) => { chatMenuRefs.current[3] = el; }}>
+                <button onClick={() => setActiveChatMenuIndex((prev) => (prev === 3 ? null : 3))} >
+                  <FontAwesomeIcon icon={faEllipsis} />
+                </button>
+                {activeChatMenuIndex === 3 && (
+                <div className='ai-message-options-tab options'>
+                  <button className='ai-message-tab-option'>
+                   <FontAwesomeIcon icon={faArrowsSplitUpAndLeft} />
+                    <span>Branch Chat</span>
+                  </button>
+                  <button className='ai-message-tab-option'>
+                    <FontAwesomeIcon icon={faHeadphones} />
+                    <span>Listen</span>
+                  </button>
+                  <button className='ai-message-tab-option'>
+                    <FontAwesomeIcon icon={faBookOpen} />
+                    <span>View Sources</span>
+                  </button>
+                </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
