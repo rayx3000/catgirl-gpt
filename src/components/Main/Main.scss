@@ -18,8 +18,9 @@
         align-self: flex-end;
         gap: 20px;
         align-items: center;
+        position: relative;
 
-        button {
+        .chat-option {
             display: flex;
             gap: 8px;
             background: transparent;
@@ -35,6 +36,14 @@
             &:active {
                 background: #ff78bd;
             }
+        }
+
+        .chat-options-tab{
+            right: 5px;
+        }
+
+        .chat-tab-option{
+            width: 200px;
         }
     }
 }
@@ -144,34 +153,8 @@
     position: relative;
 
     .add-input-options{
-        position: absolute;
-        background-color: #ff78bd;
-        display: flex;
-        flex-direction: column;
         top: -208px;
-        border-radius: 8px;
         left: 0px;
-        overflow: hidden;
-
-        button{
-            background: transparent;
-            padding: 12px 16.5px;
-            border: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            justify-content: flex-start;
-            cursor: pointer;
-        }
-
-        button:hover{
-            background-color: #fb6cb6;
-        }
-
-        button:active{
-            background-color: #fb59ad;
-        }
-
     }
 
     .input-box{
@@ -240,4 +223,33 @@
             }
         }
     }
+}
+
+.options{
+    position: absolute;
+    background-color: #ff78bd;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+
+    button{
+        background: transparent;
+        padding: 12px 16.5px;
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: flex-start;
+        cursor: pointer;
+    }
+
+    button:hover{
+        background-color: #fb6cb6;
+    }
+
+    button:active{
+        background-color: #fb59ad;
+    }
+
 }

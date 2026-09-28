@@ -1,24 +1,28 @@
 import { faShareFromSquare, faEllipsis, faCopy, faArrowUpFromBracket, 
          faPencil, faThumbsUp, faThumbsDown, faRepeat, faPlus, faBrain, 
          faMicrophoneLines, faArrowRight, faPaperclip, faFolderPlus,
-        faImage, faMusic, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
+        faImage, faMusic, faMagnifyingGlass, faFolderOpen, faThumbTack,
+        faBoxArchive, faTrashCan} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState, useEffect, useRef } from 'react';
 import './Main.scss'
 
 const Main: React.FC = () => {
 
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState<boolean>(false);
+  const [isInputMenuOpen, setIsInputMenuOpen] = useState<boolean>(false);
+
+  const headerMenuRef = useRef<HTMLDivElement>(null);
+  const inputMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        isVisible && 
-        menuRef.current && 
-        !menuRef.current.contains(event.target as Node)
-      ) {
-        setIsVisible(false);
+      const target = event.target as Node;
+      if (headerMenuRef.current && !headerMenuRef.current.contains(target)) {
+        setIsHeaderMenuOpen(false);
+      }
+      if (inputMenuRef.current && !inputMenuRef.current.contains(target)) {
+        setIsInputMenuOpen(false);
       }
     };
 
@@ -27,7 +31,7 @@ const Main: React.FC = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isVisible]); 
+  }, []); 
 
 
   return (
@@ -38,9 +42,31 @@ const Main: React.FC = () => {
               <FontAwesomeIcon icon={faShareFromSquare} />
               <span>Share</span>
           </button>
-          <button className="chat-option">
-            <FontAwesomeIcon icon={faEllipsis} />
-          </button>
+          <div ref={headerMenuRef}>
+            <button className="chat-option" onClick={() => setIsHeaderMenuOpen((prev) => !prev)} >
+              <FontAwesomeIcon icon={faEllipsis} />
+            </button>
+            {isHeaderMenuOpen && (
+              <div className='chat-options-tab options'>
+                <button className='chat-tab-option'>
+                  <FontAwesomeIcon icon={faFolderOpen} />
+                  <span>View Files In Chat</span>
+                </button>
+                <button className='chat-tab-option'>
+                  <FontAwesomeIcon icon={faThumbTack} />
+                  <span>Pin Chat</span>
+                </button>
+                <button className='chat-tab-option'>
+                  <FontAwesomeIcon icon={faBoxArchive} />
+                  <span>Archive</span>
+                </button>
+                <button className='chat-tab-option'>
+                  <FontAwesomeIcon icon={faTrashCan} />
+                  <span>Delete Chat</span>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className='chat-content'>
@@ -151,9 +177,9 @@ const Main: React.FC = () => {
         </div>
       </div>
       <div className='chat-input'>
-        <div ref={menuRef}>
-          {isVisible && (
-            <div className='add-input-options'>
+        <div ref={inputMenuRef}>
+          {isInputMenuOpen && (
+            <div className='add-input-options options'>
               <button>
                 <FontAwesomeIcon icon={faPaperclip} />
                 <span>Add Photos and Files</span>
@@ -179,7 +205,7 @@ const Main: React.FC = () => {
 
           <div className="input-box">
             <FontAwesomeIcon 
-              onClick={() => setIsVisible((prev) => !prev)} 
+              onClick={() => setIsInputMenuOpen((prev) => !prev)} 
               className="input-icons toggle-btn" 
               icon={faPlus} 
             />
