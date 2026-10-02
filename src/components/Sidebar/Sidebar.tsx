@@ -2,9 +2,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faTableColumns, faSquarePlus, faImages, faInbox, faFolderOpen, faFileCode, faPuzzlePiece, faEllipsis } from '@fortawesome/free-solid-svg-icons'
 import './Sidebar.scss'
 import profilePic from '../../assets/profile.png'
+import React, { useState, useEffect, useRef } from 'react';
 
 const Sidebar = () => {
-  return (
+
+   const [activeHistoryMenuIndex, setActiveHistoryMenuIndex] = useState<number | null>(null);
+
+   const historyMenuRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+   useEffect(() => {
+       const handleClickOutside = (event: MouseEvent) => {
+         const target = event.target as Node;
+         if (
+           activeHistoryMenuIndex !== null &&
+           historyMenuRefs.current[activeHistoryMenuIndex] &&
+           !historyMenuRefs.current[activeHistoryMenuIndex]?.contains(target)
+         ) {
+           setActiveHistoryMenuIndex(null);
+         }
+       };
+   
+       document.addEventListener('mousedown', handleClickOutside);
+   
+       return () => {
+         document.removeEventListener('mousedown', handleClickOutside);
+       };
+     }, [activeHistoryMenuIndex]); 
+  
+   return (
     <div className='sidebar'>
       <div className='sidebar-header'>
         <h3>Catgirl</h3>
