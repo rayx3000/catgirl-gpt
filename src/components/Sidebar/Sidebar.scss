@@ -84,10 +84,66 @@
         overflow-y: auto;
         overflow-x: hidden;
         padding-right: 5.5px;
+        position: relative;
 
-        button{
+        .chat-history{
+            display: flex;
+            position: relative;
+            border-radius: 12px;
+            align-items: center;
+
+            &:hover{
+                background: #ff90c9;
+                .chat-history-option{
+                    opacity: 1;
+                    cursor: pointer;
+                }
+            }
+
+            &:active{
+                background: #ff78bd;
+            }
+
+            .chat-history-option{
+                padding: 2px;
+                border-radius: 50%;
+                &:hover{
+                    background: #e71b84;
+                }
+
+                &:active{
+                    background: #d42d83;
+                }
+            }
+        }
+
+        .chat-history-label{
             width: 15.5vw;
             display: flex;
+            justify-content: space-between;
+        }
+
+
+        .chat-history-option{
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            position: absolute;
+            right: 3px;
+
+            .chat-history-option:hover{
+                color: #333;
+            }
+
+            .chat-history-option:active{
+                color: #555;
+            }
+
+        }
+
+        .chat-history-options{
+            z-index: 1000;
+            position: absolute;
+            right: 3px;
         }
     }
 }
