@@ -8,7 +8,6 @@
     align-items: center;
     height: 100%;
     flex-direction: column;
-    padding: 10px 0px 5px 10px;
     border-right: 1px solid #e5b0cb;
 
     button{
@@ -33,6 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 10px 0px 5px 10px;
     width: 100%;
     gap: 45%;
     margin-top: -20px;
@@ -64,23 +64,26 @@
 .sidebar-chat-tools{
     display: flex;
     flex-direction: column;
+    padding: 10px 8px 5px 10px;
+    width: 100%;
 
     .chat-tool{
-        width: 15.5vw;
         display: flex;
         gap: 5.5px;
+        align-items: center;
     }
 }
 
 .sidebar-chat-history{
     display: flex;
     flex-direction: column;
+    padding: 10px 0px 5px 10px;
     width: 100%;
 
     .chat-history-content{
         display: flex;
         flex-direction: column;
-        height: 51.5vh;
+        height: 46.5vh;
         overflow-y: auto;
         overflow-x: hidden;
         padding-right: 5.5px;
@@ -91,6 +94,7 @@
             position: relative;
             border-radius: 12px;
             align-items: center;
+            width: 100%;
 
             &:hover{
                 background: #ff90c9;
@@ -141,9 +145,28 @@
         }
 
         .chat-history-options{
-            z-index: 1000;
-            position: absolute;
-            right: 3px;
+            z-index: 5000;
+            position: fixed;
+            width: 240px;
+            padding: 8px;
+            gap: 2px;
+            border-radius: 16px;
+            overflow: hidden;
+
+            button.ai-message-tab-option{
+                width: 100%;
+                min-height: 43px;
+                padding: 10px 14px;
+                gap: 12px;
+                border-radius: 8px;
+                color: inherit;
+                font-size: 0.95rem;
+                text-align: left;
+
+                svg{
+                    width: 16px;
+                }
+            }
         }
     }
 }
@@ -152,19 +175,41 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 15vw;
-    padding-top: 8px;
+    align-self: flex-start;
+    min-width: 100%;
+    padding: 0.5px 5.5px;
+    position: relative;
+
+    .user-name-btn{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 18vw;
+        padding: 8px;
+        gap: 12px;
+    }
 
     .user-name{
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 6.5px;
+        justify-content: flex-start;
+        padding: 8px;
+        gap: 8px;
     }
 
     .profile-pic{
         width: 35px;
         height: 35px;
         border-radius: 50%;
+    }
+
+    .profile-options-tab{
+        position: absolute;
+        top: -262px;
+        width: 96%;
+    }
+
+    button{
+        width: 100%;
     }
 }

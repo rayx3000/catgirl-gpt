@@ -13,6 +13,11 @@ import {
   faPen,
   faBoxArchive,
   faTrash,
+  faCube,
+  faGear,
+  faUser,
+  faCircleQuestion,
+  faArrowRightFromBracket
 } from '@fortawesome/free-solid-svg-icons'
 
 import profilePic from '../../assets/profile.png'
@@ -20,7 +25,12 @@ import './Sidebar.scss'
 import { history } from '../../data/history'
 
 const Sidebar: React.FC = () => {
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState<boolean>(false);
+
+  const profileMenuRef = useRef<HTMLDivElement>(null);
+
   const [activeHistoryMenuIndex, setActiveHistoryMenuIndex] = useState<number | null>(null)
+  const [historyMenuPosition, setHistoryMenuPosition] = useState({ top: 0, left: 0 })
   const historyMenuRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
@@ -41,8 +51,20 @@ const Sidebar: React.FC = () => {
     }
   }, [activeHistoryMenuIndex])
 
-  const toggleHistoryMenu = (index: number) => {
-    setActiveHistoryMenuIndex((prev) => (prev === index ? null : index))
+  const toggleHistoryMenu = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
+    if (activeHistoryMenuIndex === index) {
+      setActiveHistoryMenuIndex(null)
+      return
+    }
+
+    const trigger = event.currentTarget.getBoundingClientRect()
+    const menuWidth = 240
+    const menuHeight = 156
+    setHistoryMenuPosition({
+      top: Math.max(8, trigger.top - menuHeight - 8),
+      left: Math.max(8, Math.min(trigger.right - 12, window.innerWidth - menuWidth - 8)),
+    })
+    setActiveHistoryMenuIndex(index)
   }
 
   return (
@@ -57,31 +79,31 @@ const Sidebar: React.FC = () => {
 
       <div className='sidebar-chat-tools'>
         <button type='button' className='chat-tool'>
-          <FontAwesomeIcon icon={faSquarePlus} />
+          <FontAwesomeIcon className='icon' icon={faSquarePlus} />
           <span>New Chat</span>
         </button>
         <button type='button' className='chat-tool'>
-          <FontAwesomeIcon icon={faImages} />
+          <FontAwesomeIcon className='icon' icon={faImages} />
           <span>Images</span>
         </button>
         <button type='button' className='chat-tool'>
-          <FontAwesomeIcon icon={faInbox} />
+          <FontAwesomeIcon className='icon' icon={faInbox} />
           <span>Library</span>
         </button>
         <button type='button' className='chat-tool'>
-          <FontAwesomeIcon icon={faFolderOpen} />
+          <FontAwesomeIcon className='icon' icon={faFolderOpen} />
           <span>Projects</span>
         </button>
         <button type='button' className='chat-tool'>
-          <FontAwesomeIcon icon={faFileCode} />
+          <FontAwesomeIcon className='icon' icon={faFileCode} />
           <span>Codixie</span>
         </button>
         <button type='button' className='chat-tool'>
-          <FontAwesomeIcon icon={faPuzzlePiece} />
+          <FontAwesomeIcon className='icon' icon={faPuzzlePiece} />
           <span>Plugins</span>
         </button>
         <button type='button' className='chat-tool'>
-          <FontAwesomeIcon icon={faEllipsis} />
+          <FontAwesomeIcon className='icon' icon={faEllipsis} />
           <span>More</span>
         </button>
       </div>
@@ -109,40 +131,77 @@ const Sidebar: React.FC = () => {
                   className='chat-history-option'
                   onClick={(e) => {
                     e.stopPropagation()
-                    toggleHistoryMenu(index)
+                    toggleHistoryMenu(index, e)
                   }}
                 >
                   <FontAwesomeIcon icon={faEllipsis} />
                 </button>
+                {activeHistoryMenuIndex === index && (
+                  <div
+                    className='chat-history-options options'
+                    style={{ top: historyMenuPosition.top, left: historyMenuPosition.left }}
+                  >
+                    <button type='button' className='ai-message-tab-option'>
+                      <FontAwesomeIcon icon={faPen} />
+                      <span>Rename Chat</span>
+                    </button>
+                    <button type='button' className='ai-message-tab-option'>
+                      <FontAwesomeIcon icon={faBoxArchive} />
+                      <span>Archive</span>
+                    </button>
+                    <button type='button' className='ai-message-tab-option'>
+                      <FontAwesomeIcon icon={faTrash} />
+                      <span>Delete</span>
+                    </button>
+                  </div>
+                )}
               </div>
-
-              {activeHistoryMenuIndex === index && (
-                <div className='chat-history-options options'>
-                  <button type='button' className='ai-message-tab-option'>
-                    <FontAwesomeIcon icon={faPen} />
-                    <span>Rename Chat</span>
-                  </button>
-                  <button type='button' className='ai-message-tab-option'>
-                    <FontAwesomeIcon icon={faBoxArchive} />
-                    <span>Archive</span>
-                  </button>
-                  <button type='button' className='ai-message-tab-option'>
-                    <FontAwesomeIcon icon={faTrash} />
-                    <span>Delete</span>
-                  </button>
-                </div>
-              )}
             </div>
           ))}
         </div>
       </div>
 
       <div className='sidebar-user-section'>
-        <div className='user-name'>
-          <img className='profile-pic' src={profilePic} alt='profile pic' />
-          <span id='user-name'>Sofia Trixie</span>
+        <div ref={profileMenuRef}>
+          <button type='button' className='user-name-btn' onClick={() => setIsProfileMenuOpen(prev => !prev)}>
+            <img className='profile-pic' src={profilePic} alt='profile pic' />
+            <span id='user-name'>Sofia Trixie</span>
+          </button>
+          {isProfileMenuOpen &&
+          <div className='profile-options-tab options'>
+            <div className='profile-options-section-1'>
+            <button type='button' className='user-name'>
+              <img className='profile-pic' src={profilePic} alt='profile pic' />
+              <span id='user-name'>Sofia Trixie</span>
+            </button>
+            </div>
+            <div className='profile-options-section-2'>
+              <button className='profile-tab-option'>
+                <FontAwesomeIcon icon={faCube} />
+                <span>View Files In Chat</span>
+              </button>
+              <button className='profile-tab-option'>
+                <FontAwesomeIcon icon={faUser} />
+                <span>Profile</span>
+              </button>
+              <button className='profile-tab-option'>
+                <FontAwesomeIcon icon={faGear} />
+                <span>Settings</span>
+              </button>
+            </div>
+            <div className='profile-options-section-3'>
+              <button className='profile-tab-option'>
+                <FontAwesomeIcon icon={faCircleQuestion} />
+                <span>Help</span>
+              </button>
+              <button className='profile-tab-option'>
+                <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                <span>Log Out</span>
+              </button>
+            </div>
+          </div>
+          }
         </div>
-        <button type='button' className='settings' aria-label='Settings'></button>
       </div>
     </div>
   )
